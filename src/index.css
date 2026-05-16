@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #131313;
+  --color-on-background: #e5e2e1;
+  --color-primary: #E5E2E1;
+  --color-on-primary: #690100;
+  --color-primary-container: #ff5540;
+  --color-surface-container-low: #1c1b1b;
+  --color-surface-container-highest: #353534;
+  --color-on-surface-variant: #ebbbb4;
+  --color-outline-variant: #603e39;
+
+  --spacing-margin-desktop: 64px;
+
+  --font-display-lg: "Space Grotesk", sans-serif;
+  --font-label-caps: "JetBrains Mono", monospace;
+  --font-headline-lg: "Space Grotesk", sans-serif;
+  --font-body-md: "Inter", sans-serif;
+}
+
+/* Typography Overrides */
+.text-display-lg {
+  font-size: 72px;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+}
+.text-label-caps {
+  font-size: 14px;
+  line-height: 1.0;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+}
+.text-headline-lg {
+  font-size: 48px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+/* Visual Effects & Layers */
+.shard-bg {
+    background-color: #131313;
+    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDKUiqZ1Pl6nFSl5lbSMrXmveTZgKUVrIDLzmKW0zr28vuzTM5FlaB5UkeVrPHUVxlwhB_eflkVsrhhUXTUDNsPGalAAvTEcYqo-t2WNDxMI4CR9H_OJIUNcwTxNnzaMIJNJikKPyyvd0kkBgzOhsRS-eAHbKY9KrtGbYaCntEsftRNFOd79-7BcxjnYj_tMVWqTrrbS1PfBARSQZGkTq3wQwVki_0yPI-ZIatndxRcRZVdI3s_d90rUtqowlOh4g3CYaoTtSWHDnmQ');
+    background-size: cover;
+    background-position: center;
+}
+.vignette {
+    background: radial-gradient(circle, transparent 20%, #131313 120%);
+}
+.glitch-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.05"/></svg>');
+    pointer-events: none;
+    mix-blend-mode: overlay;
+}
+.neon-glow {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.4);
+}
+.diagonal-line {
+    transform: skew(-20deg);
+}
+
+/* Custom Animations */
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+.animate-shimmer {
+    animation: shimmer 2s infinite linear;
+}
+
+@keyframes glitch-text {
+    0% { transform: translate(0); text-shadow: 0 0 20px rgb(255, 255, 255); }
+    2% { transform: translate(-2px, 2px); text-shadow: 2px 0 #fff, -2px 0 #ff5540; }
+    4% { transform: translate(2px, -2px); text-shadow: -2px 0 #fff, 2px 0 #ff5540; }
+    6% { transform: translate(0); }
+    100% { transform: translate(0); }
+}
+.animate-glitch-rhythmic {
+    animation: glitch-text 5s infinite;
+}
+
+@keyframes timer-pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.02); opacity: 0.95; }
+}
+.animate-timer-pulse {
+    animation: timer-pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
